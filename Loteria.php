@@ -78,6 +78,25 @@ class Loteria
 		return $dados;
 	}
 
+	public function salvaTxt($dados = [], $nome_arquivo = 'loteria'){
+		
+		$txt = fopen($nome_arquivo. '.txt', 'a');
+
+		fwrite($txt, "Loteria - Monetizze \n");
+
+		foreach ($dados as $key => $value){
+			fwrite($txt, "Jogo " . ($key + 1) . "\n");
+			$jogos = "";
+			foreach ($value as $num) {
+				$jogos .= $num . " - ";
+			}
+			$jogos = substr($jogos, 0, -2);
+			fwrite($txt, $jogos . "\n");
+		}
+
+		fclose($txt);
+	}
+
 	//Realiza o sorteio
 
     public function realizaSorteio(){
@@ -95,7 +114,7 @@ class Loteria
 		return $this->qtdDezenas;
 	}
 
-	public function setQtdDezenas($qtdDezenas)
+	private function setQtdDezenas($qtdDezenas)
 	{
 		$this->qtdDezenas = $qtdDezenas;
 

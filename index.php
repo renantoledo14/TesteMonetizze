@@ -11,6 +11,8 @@ $jogos = new Loteria(8, 5); //define quantidades de dezenas e de jogos
 
 $sorteio = $jogos->realizaSorteio();
 
+$jogos->salvaTxt($jogos->getJogos(), 'Teste123');
+
 ?>
 
 <!doctype html>
